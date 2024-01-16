@@ -11,7 +11,8 @@ function Categories() {
   const [uniqueCategories, setUniqueCategories] = useState([]);
   const navigate = useNavigate();
 
-  const category = useSelector((state) => state.products.allProduct);
+  // Assuming state.products.allProduct is an array
+  const category = useSelector((state) => state.products.allProduct || []);
   const statu = useSelector((state) => state.products.alltStatu);
 
   useEffect(() => {
@@ -21,7 +22,10 @@ function Categories() {
   }, [dispatch, statu]);
 
   useEffect(() => {
-    const categories = [...new Set(category.map((item) => item.category))];
+    // Ensure that category is an array before using map
+    const categories = Array.isArray(category)
+      ? [...new Set(category.map((item) => item.category))]
+      : [];
     setUniqueCategories(categories);
   }, [category]);
 
@@ -34,7 +38,7 @@ function Categories() {
     <div className="leading-10 pl-5 mt-3">
       {uniqueCategories.map((item, i) => (
         <h1
-          className={`capitalize  text-dark hover:text-black duration-300 cursor-pointer  `}
+          className={`capitalize text-dark hover:text-black duration-300 cursor-pointer`}
           key={i}
           onClick={() => handleCategory(item)}
         >
