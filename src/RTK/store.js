@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import blogSlice, { blogSliceReducer } from "./slice/BlogSlice";
+import { blogSliceReducer } from "./slice/BlogSlice";
 import productSlice from "./slice/ProductSlice";
 import SearchSlice from "./slice/SearchSlice";
 
