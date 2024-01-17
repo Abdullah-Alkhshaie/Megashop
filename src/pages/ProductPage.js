@@ -23,10 +23,6 @@ function ProductPage() {
     }
   }, [dispatch, allProducts]);
 
-  if (status === "loading" || !product) {
-    return <div>Loading...</div>;
-  }
-
   return (
     <div className="px-5 md:px-10">
       <div className="bg-white p-10">
