@@ -33,7 +33,7 @@ function Hero() {
   };
 
   return (
-    <div className="w-full xl:max-w-[1130px] relative overflow-hidden mb-10   md:px-10 xl:px-0 ">
+    <div className="w-full xl:max-w-[930px] relative overflow-hidden mb-10   md:px-10 xl:px-0 ">
       <Slider ref={sliderRef} {...settings}>
         {sliders.map((slide, i) => (
           <img
