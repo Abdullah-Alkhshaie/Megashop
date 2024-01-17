@@ -15,10 +15,10 @@ function ProductPage() {
   );
 
   useEffect(() => {
-    if (!product) {
+    if (!Array.isArray(allProducts) || allProducts.length === 0) {
       dispatch(fetchAllProduct());
     }
-  }, [dispatch, product]);
+  }, [dispatch, allProducts]);
 
   if (!product) {
     return <div>Loading...</div>;
