@@ -10,15 +10,16 @@ function ProductPage() {
   const dispatch = useDispatch();
 
   const allProducts = useSelector((state) => state.products.allProduct);
-  const product = allProducts.find(
-    (product) => product.id === parseInt(id, 10)
-  );
+  const product =
+    allProducts && Array.isArray(allProducts)
+      ? allProducts.find((product) => product.id === parseInt(id, 10))
+      : null;
 
   useEffect(() => {
-    if (!Array.isArray(allProducts) || allProducts.length === 0) {
+    if (!product) {
       dispatch(fetchAllProduct());
     }
-  }, [dispatch, allProducts]);
+  }, [dispatch, product]);
 
   if (!product) {
     return <div>Loading...</div>;
