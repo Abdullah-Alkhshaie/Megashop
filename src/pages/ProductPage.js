@@ -12,16 +12,18 @@ function ProductPage() {
   const allProducts = useSelector((state) => state.products.allProduct);
   const product =
     allProducts && Array.isArray(allProducts)
-      ? allProducts.find((product) => product.id === parseInt(id, 10))
+      ? allProducts.find((p) => p.id === parseInt(id, 10))
       : null;
 
+  const status = useSelector((state) => state.products.alltStatu);
+
   useEffect(() => {
-    if (!product) {
+    if (!allProducts || allProducts.length === 0) {
       dispatch(fetchAllProduct());
     }
-  }, [dispatch, product]);
+  }, [dispatch, allProducts]);
 
-  if (!product) {
+  if (status === "loading" || !product) {
     return <div>Loading...</div>;
   }
 
